@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Telangana State Portal</title>
+<link rel="icon" type="image/png" href="emblem.png">
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="search-overlay" id="searchOverlay">
+    <div class="search-box">
+        <h2>Search Telangana Portal</h2>
+        <input type="text" id="portalSearchInput" placeholder="Type services, departments, news, contacts...">
+        <div class="search-actions">
+            <button onclick="toggleSearch()" style="background:#64748b;">Close</button>
+            <button onclick="performPortalSearch()">Search</button>
+        </div>
+    </div>
+</div>
+
+<!-- ACCESSIBILITY TOOL -->
+<div class="accessibility-wrapper">
+    <button class="accessibility-toggle" onclick="toggleAccessibility()" title="Accessibility Options" aria-label="Open accessibility options">♿</button>
+
+    <div class="accessibility-panel" id="accessibilityPanel">
+        <h3>Accessibility</h3>
+        <button onclick="increaseFont()">A+ Increase Text</button>
+        <button onclick="decreaseFont()">A- Decrease Text</button>
+        <button onclick="toggleContrast()">High Contrast</button>
+        <button onclick="toggleGrayscale()">Grayscale</button>
+        <button onclick="toggleUnderline()">Underline Links</button>
+        <button onclick="togglePauseAnimations()">Pause Animations</button>
+        <button class="reset-btn" onclick="resetAccessibility()">Reset</button>
+    </div>
+</div>
+
+<div class="topbar">
+    <div class="topbar-left">Government of Telangana</div>
+
+    <div class="topbar-right">
+        <a href="https://www.facebook.com/TelanganaCMO/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook"></a>
+        <a href="https://x.com/TelanganaCMO" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="X"></a>
+        <a href="https://www.youtube.com/user/TelanganaCMO" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube"></a>
+        <a href="https://www.instagram.com/telangana/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram"></a>
+        <a href="https://www.whatsapp.com/channel/0029Va809Uk1SWt1teG4Gp0N" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp"></a>
+        <a href="#news-section">Skip to main content</a>
+        <button class="top-search-btn" onclick="toggleSearch()" title="Search">🔍</button>
+    </div>
+</div>
+
+<header>
+    <div class="logo">
+        <img src="emblem.png" alt="Emblem">
+        <img src="logoo.png" alt="Telangana Logo">
+        <div>
+            <h1>Telangana State Portal</h1>
+            <span>Official Information & Citizen Services</span>
+        </div>
+    </div>
+
+    <button class="menu-btn" onclick="openMobileMenu()">☰</button>
+
+    <nav id="mainNav">
+        <div class="dropdown"><a href="#">Home</a></div>
+
+        <div class="dropdown">
+            <a href="#">About</a>
+            <div class="dropdown-content">
+                <a href="https://www.telangana.gov.in/about/state-profile/" target="_blank">State Profile</a>
+                <a href="https://www.telangana.gov.in/about/districts/" target="_blank">Districts</a>
+                <a href="https://www.telangana.gov.in/about/language-culture/" target="_blank">Language & Culture</a>
+                <a href="https://www.telangana.gov.in/about/state-symbols/" target="_blank">State Symbols</a>
+                <a href="https://www.telangana.gov.in/about/state-song/" target="_blank">State Song</a>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <a href="#">Legislature</a>
+            <div class="dropdown-content">
+                <a href="https://www.telangana.gov.in/legislature/legislative-council-chairman/" target="_blank">Legislative Council Chairman</a>
+                <a href="https://www.telangana.gov.in/legislature/legislative-assembly-speaker/" target="_blank">Legislative Assembly Speaker</a>
+                <a href="https://www.telangana.gov.in/legislature/members-of-legislative-council/" target="_blank">Members of Legislative Council</a>
+                <a href="https://www.telangana.gov.in/legislature/members-of-legislative-assembly/" target="_blank">Members of Legislative Assembly</a>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <a href="#">Judiciary</a>
+            <div class="dropdown-content">
+                <a href="https://www.telangana.gov.in/judiciary/chief-justice/" target="_blank">Chief Justice</a>
+                <a href="http://telangana.gov.in/judiciary/high-court/" target="_blank">High Court</a>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <a href="#">Government</a>
+            <div class="dropdown-content">
+                <a href="https://www.telangana.gov.in/government/governor/" target="_blank">Governor</a>
+                <a href="https://www.telangana.gov.in/government/chief-minister/" target="_blank">Chief Minister</a>
+                <a href="https://www.telangana.gov.in/government/council-of-ministers/" target="_blank">Council of Ministers</a>
+                <a href="https://www.telangana.gov.in/government/chief-secretary/" target="_blank">Chief Secretary</a>
+                <a href="https://www.telangana.gov.in/government/members-of-parliament/" target="_blank">MPs</a>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <a href="https://www.telangana.gov.in/departments/" target="_blank">Departments</a>
+            <div class="mega-dropdown">
+                <div class="mega-col">
+                    <a href="https://www.telangana.gov.in/departments/agriculture-and-co-operation/" target="_blank">Agriculture And Co-Operation</a>
+                    <a href="https://www.telangana.gov.in/departments/backward-classes-welfare/" target="_blank">Backward Classes Welfare</a>
+                    <a href="https://www.telangana.gov.in/departments/endowments/" target="_blank">Endowments</a>
+                    <a href="https://www.telangana.gov.in/departments/finance/" target="_blank">Finance</a>
+                    <a href="https://www.telangana.gov.in/departments/health-medical-and-family-welfare/" target="_blank">Health, Medical & Family Welfare</a>
+                    <a href="https://www.telangana.gov.in/departments/information-technology-electronics-and-communications/" target="_blank">Information Technology</a>
+                </div>
+                <div class="mega-col">
+                    <a href="https://www.telangana.gov.in/departments/animal-husbandry-dairy-development-and-fisheries/" target="_blank">Animal Husbandry & Fisheries</a>
+                    <a href="https://www.telangana.gov.in/departments/energy/" target="_blank">Energy</a>
+                    <a href="https://www.telangana.gov.in/departments/general-administration/" target="_blank">General Administration</a>
+                    <a href="https://www.telangana.gov.in/departments/higher-education/" target="_blank">Higher Education</a>
+                    <a href="https://www.telangana.gov.in/departments/industries-and-commerce/" target="_blank">Industries And Commerce</a>
+                    <a href="https://www.telangana.gov.in/departments/irrigation-and-cad/" target="_blank">Irrigation And CAD</a>
+                </div>
+                <div class="mega-col">
+                    <a href="https://www.telangana.gov.in/departments/environment-forests-science-and-technology/" target="_blank">Environment & Forests</a>
+                    <a href="https://www.telangana.gov.in/departments/handlooms-and-textiles/" target="_blank">Handlooms & Textiles</a>
+                    <a href="https://www.telangana.gov.in/departments/information-and-public-relations/" target="_blank">Information & Public Relations</a>
+                    <a href="https://www.telangana.gov.in/departments/labour-employment-training-and-factories/" target="_blank">Labour, Employment & Factories</a>
+                    <a href="https://www.telangana.gov.in/departments/minorities-welfare/" target="_blank">Minorities Welfare</a>
+                    <a href="https://www.telangana.gov.in/departments/women-and-child-welfare/" target="_blank">Women And Child Welfare</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <a href="#">Services</a>
+            <div class="dropdown-content">
+                <a href="https://ts.meeseva.telangana.gov.in/" target="_blank">MeeSeva Services</a>
+                <a href="https://www.telangana.gov.in/services/" target="_blank">State Services</a>
+                <a href="https://services.india.gov.in/" target="_blank">Central Services</a>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <a href="#">Contact</a>
+            <div class="dropdown-content">
+                <a href="https://www.telangana.gov.in/contacts/secretariat/" target="_blank">Secretariat</a>
+                <a href="https://www.telangana.gov.in/contacts/district-officials/" target="_blank">District Officials</a>
+                <a href="https://www.telangana.gov.in/contacts/public-utility-contacts/" target="_blank">Public Utility Contacts</a>
+                <a href="https://www.telangana.gov.in/contacts/hospitals/" target="_blank">Hospitals</a>
+                <a href="https://www.telangana.gov.in/contacts/news/" target="_blank">Press & Media</a>
+                <a href="https://www.telangana.gov.in/contacts/emergency-contacts/" target="_blank">Emergency Contacts</a>
+                <a href="https://www.telangana.gov.in/contacts/contact-us/" target="_blank">Contact Us</a>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <a href="#">RTI</a>
+            <div class="dropdown-content">
+                <a href="https://www.telangana.gov.in/rti/rti-act/" target="_blank">RTI Act</a>
+                <a href="https://www.telangana.gov.in/rti/information-commission/" target="_blank">Information Commission</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-left">
+        <span class="hero-badge">Official Government Gateway</span>
+        <h2>Bringing Digital Services Closer to Citizens</h2>
+        <p>
+            Access welfare schemes, download certificates, explore latest state initiatives, government services, tourism, investment opportunities and official information in one place.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="#news-section" class="main-btn">Latest Updates</a>
+            <a href="https://ts.meeseva.telangana.gov.in/" target="_blank" class="outline-btn">Citizen Services</a>
+        </div>
+
+        </div>
+
+    <div class="hero-right">
+        <div class="hero-photo-slider">
+
+            <a class="mainHeroLink active" href="https://en.wikipedia.org/wiki/Charminar" target="_blank">
+                <img class="mainHeroSlide active" src="charminar.jpg" alt="Charminar">
+            </a>
+
+            <a class="mainHeroLink" href="https://en.wikipedia.org/wiki/Golconda" target="_blank">
+                <img class="mainHeroSlide" src="golconda.jpg" alt="Golconda Fort">
+            </a>
+
+            <a class="mainHeroLink" href="https://en.wikipedia.org/wiki/Telangana_Legislative_Assembly" target="_blank">
+                <img class="mainHeroSlide" src="unnamed.webp" alt="Assembly Building">
+            </a>
+
+            <a class="mainHeroLink" href="https://en.wikipedia.org/wiki/Warangal_Fort" target="_blank">
+                <img class="mainHeroSlide" src="warangal.jpg" alt="Warangal Gate">
+            </a>
+
+            <a class="mainHeroLink" href="https://en.wikipedia.org/wiki/Ramappa_Temple" target="_blank">
+                <img class="mainHeroSlide" src="Ramappa_Temple_(Human_Scale).jpg" alt="Ramappa Temple">
+            </a>
+
+            <a class="mainHeroLink" href="https://en.wikipedia.org/wiki/Yadadri_Temple" target="_blank">
+                <img class="mainHeroSlide" src="Yadadri_Temple_on_the_hilltop.jpg" alt="Yadadri Temple">
+            </a>
+
+            <div class="slider-dots">
+                <button class="mainHeroDot active" onclick="showMainHeroSlide(0)"></button>
+                <button class="mainHeroDot" onclick="showMainHeroSlide(1)"></button>
+                <button class="mainHeroDot" onclick="showMainHeroSlide(2)"></button>
+                <button class="mainHeroDot" onclick="showMainHeroSlide(3)"></button>
+                <button class="mainHeroDot" onclick="showMainHeroSlide(4)"></button>
+                <button class="mainHeroDot" onclick="showMainHeroSlide(5)"></button>
+            </div>
+
+            <div class="slider-overlay">
+                <span>Explore Telangana</span>
+                <h3 id="mainHeroCaption">Charminar</h3>
+                <p id="mainHeroText">Discover Telangana’s heritage, culture, architecture, tourism and public services.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<div class="live-clock-banner">
+    <span id="liveClock">⏱️ Loading Live System Time...</span>
+</div>
+
+
+<section class="leaders-info-section">
+    <div class="leaders-info-container">
+
+        <div class="leader-info-card">
+            <img src="shiva.jpg" alt="Hon’ble Governor">
+            <div class="leader-info-content">
+                <span>Hon’ble Governor</span>
+                <h2>Shri Shiv Pratap Shukla</h2>
+                <p>
+                    The Governor is the constitutional head of the state and plays an important role in the administration of Telangana.
+                </p>
+                <a href="https://en-wikipedia-org.translate.goog/wiki/Shiv_Pratap_Shukla?_x_tr_sl=en&_x_tr_tl=hi&_x_tr_hl=hi&_x_tr_pto=tc" target="_blank">
+                    View Profile ↗
+                </a>
+            </div>
+        </div>
+
+        <div class="leader-info-card">
+            <img src="cm.webp" alt="Hon’ble Chief Minister">
+            <div class="leader-info-content">
+                <span>Hon’ble Chief Minister</span>
+                <h2>Sri Anumula Revanth Reddy</h2>
+                <p>
+                    The Chief Minister leads the state government and guides welfare, development and public administration initiatives.
+                </p>
+                <a href="https://en.wikipedia.org/wiki/Revanth_Reddy" target="_blank">
+                    View Profile ↗
+                </a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<section class="state-facts-section" id="about-summary">
+    <div class="state-facts-box">
+        <div>
+            <span class="hero-badge" style="background:#003399;color:white;border:none;">Explore Telangana</span>
+            <h2>Heart of the Deccan Plateau</h2>
+            <p>
+                Formed on 2nd June 2014, Telangana is rich in historical heritage, cultural diversity,
+                architectural marvels and modern growth. Hyderabad stands as a major hub for IT,
+                pharmaceuticals, innovation and public administration.
+            </p>
+        </div>
+        <div class="facts-grid">
+            <div class="fact-item"><h4>Capital</h4><span>Hyderabad</span></div>
+            <div class="fact-item"><h4>Total Districts</h4><span>33 Districts</span></div>
+            <div class="fact-item"><h4>Official Language</h4><span>Telugu</span></div>
+            <div class="fact-item"><h4>State Bird</h4><span>Palapitta</span></div>
+            <div class="fact-item"><h4>State Animal</h4><span>Jinka</span></div>
+            <div class="fact-item"><h4>State Formation</h4><span>2 June 2014</span></div>
+        </div>
+    </div>
+</section>
+
+
+<section class="interactive-map-section" id="district-map">
+    <div class="map-header">
+        <span>Interactive Map</span>
+        <h1>Explore Telangana Districts</h1>
+        <p>Click a district name to view quick information and official district page links.</p>
+    </div>
+
+    <div class="map-container">
+        <div class="telangana-map-card">
+            <div class="district-grid">
+                
+                <button class="district-btn active" onclick="showDistrict('adilabad', this)">Adilabad</button>
+                <button class="district-btn" onclick="showDistrict('bhadradri', this)">Bhadradri Kothagudem</button>
+                <button class="district-btn" onclick="showDistrict('hanumakonda', this)">Hanumakonda</button>
+                <button class="district-btn" onclick="showDistrict('hyderabad', this)">Hyderabad</button>
+                <button class="district-btn" onclick="showDistrict('jagtial', this)">Jagtial</button>
+                <button class="district-btn" onclick="showDistrict('jangaon', this)">Jangaon</button>
+                <button class="district-btn" onclick="showDistrict('jayashankar', this)">Jayashankar Bhupalpally</button>
+                <button class="district-btn" onclick="showDistrict('jogulamba', this)">Jogulamba Gadwal</button>
+                <button class="district-btn" onclick="showDistrict('kamareddy', this)">Kamareddy</button>
+                <button class="district-btn" onclick="showDistrict('karimnagar', this)">Karimnagar</button>
+                <button class="district-btn" onclick="showDistrict('khammam', this)">Khammam</button>
+                <button class="district-btn" onclick="showDistrict('kumuram', this)">Kumuram Bheem Asifabad</button>
+                <button class="district-btn" onclick="showDistrict('mahabubabad', this)">Mahabubabad</button>
+                <button class="district-btn" onclick="showDistrict('mahbubnagar', this)">Mahabubnagar</button>
+                <button class="district-btn" onclick="showDistrict('mancherial', this)">Mancherial</button>
+                <button class="district-btn" onclick="showDistrict('medak', this)">Medak</button>
+                <button class="district-btn" onclick="showDistrict('medchal', this)">Medchal-Malkajgiri</button>
+                <button class="district-btn" onclick="showDistrict('mulugu', this)">Mulugu</button>
+                <button class="district-btn" onclick="showDistrict('nagarkurnool', this)">Nagarkurnool</button>
+                <button class="district-btn" onclick="showDistrict('nalgonda', this)">Nalgonda</button>
+                <button class="district-btn" onclick="showDistrict('narayanpet', this)">Narayanpet</button>
+                <button class="district-btn" onclick="showDistrict('nirmal', this)">Nirmal</button>
+                <button class="district-btn" onclick="showDistrict('nizamabad', this)">Nizamabad</button>
+                <button class="district-btn" onclick="showDistrict('peddapalli', this)">Peddapalli</button>
+                <button class="district-btn" onclick="showDistrict('rajanna', this)">Rajanna Sircilla</button>
+                <button class="district-btn" onclick="showDistrict('rangareddy', this)">Ranga Reddy</button>
+                <button class="district-btn" onclick="showDistrict('sangareddy', this)">Sangareddy</button>
+                <button class="district-btn" onclick="showDistrict('siddipet', this)">Siddipet</button>
+                <button class="district-btn" onclick="showDistrict('suryapet', this)">Suryapet</button>
+                <button class="district-btn" onclick="showDistrict('vikarabad', this)">Vikarabad</button>
+                <button class="district-btn" onclick="showDistrict('wanaparthy', this)">Wanaparthy</button>
+                <button class="district-btn" onclick="showDistrict('warangal', this)">Warangal</button>
+                <button class="district-btn" onclick="showDistrict('yadadri', this)">Yadadri Bhuvanagiri</button>
+
+            </div>
+        </div>
+
+        <div class="district-info-card">
+            <h2 id="districtName">Adilabad</h2>
+            <p id="districtDesc">
+                Adilabad is known for forests, waterfalls, tribal culture and scenic natural destinations.
+            </p>
+            <ul>
+                <li><strong>Known for:</strong> <span id="districtKnown">Kuntala Waterfalls, Tribal Heritage</span></li>
+                <li><strong>Important sector:</strong> <span id="districtSector">Tourism & Forests</span></li>
+                <li><strong>Tourism:</strong> <span id="districtTourism">Kuntala Waterfalls, Kawal Tiger Reserve</span></li>
+            </ul>
+            <a id="districtLink" href="https://adilabad.telangana.gov.in/" target="_blank">Visit District Website ↗</a>
+        </div>
+    </div>
+</section>
+
+<section class="jobs-section" id="jobs-notifications">
+    <div class="jobs-header">
+        <div>
+            <span>Students & Citizens</span>
+            <h1>Latest Jobs & Notifications</h1>
+            <p>Useful links for employment, scholarships, exams, government orders and public updates.</p>
+        </div>
+
+        <a class="view-all-news" href="https://www.telangana.gov.in/notifications/" target="_blank">View Notifications ↗</a>
+    </div>
+
+    <div class="jobs-grid">
+        <div class="job-card">
+            <span class="job-badge">Recruitment</span>
+            <h2>Government Job Updates</h2>
+            <p>Check official recruitment notifications, exam updates and department-wise job announcements.</p>
+            <a href="https://www.tspsc.gov.in/" target="_blank">Open TSPSC ↗</a>
+        </div>
+
+        <div class="job-card">
+            <span class="job-badge">Students</span>
+            <h2>Scholarships & Education</h2>
+            <p>Find scholarship portals, student welfare updates and education support schemes.</p>
+            <a href="https://telanganaepass.cgg.gov.in/" target="_blank">Open ePASS ↗</a>
+        </div>
+
+        <div class="job-card">
+            <span class="job-badge">Public Notice</span>
+            <h2>Government Orders</h2>
+            <p>Search official government orders, circulars and public administration documents.</p>
+            <a href="https://goir.telangana.gov.in/" target="_blank">Open GOIR ↗</a>
+        </div>
+
+        <div class="job-card">
+            <span class="job-badge">Skills</span>
+            <h2>Skill Development</h2>
+            <p>Explore skill training, employment support and youth development opportunities.</p>
+            <a href="https://www.telangana.gov.in/" target="_blank">Learn More ↗</a>
+        </div>
+
+        <div class="job-card">
+            <span class="job-badge">Tenders</span>
+            <h2>Tenders & Contracts</h2>
+            <p>View active tenders, procurement notices and public project opportunities.</p>
+            <a href="https://tender.telangana.gov.in/" target="_blank">Open Tenders ↗</a>
+        </div>
+
+        <div class="job-card">
+            <span class="job-badge">Calendar</span>
+            <h2>Events & Important Dates</h2>
+            <p>Track holidays, exams, government events and public deadlines in one place.</p>
+            <a href="https://www.telangana.gov.in/downloads/calendar-2026/" target="_blank">View Calendar ↗</a>
+        </div>
+    </div>
+</section>
+<section class="accountability-section">
+    <div class="accountability-header">
+        <span>Citizen Voice</span>
+        <h1>Public Accountability & Governance Review</h1>
+        <p>
+            Democracy becomes stronger when citizens actively question policies,
+            monitor development, and seek transparency in governance.
+        </p>
+    </div>
+
+    <div class="accountability-grid">
+
+        <div class="accountability-card">
+            <div class="issue-icon">📢</div>
+            <h2>Election Promises</h2>
+            <p>
+                Citizens expect progress on employment, welfare schemes,
+                education reforms and public development promises.
+            </p>
+
+            <ul>
+                <li>Employment opportunities</li>
+                <li>Youth welfare</li>
+                <li>Infrastructure projects</li>
+                <li>Public scheme implementation</li>
+            </ul>
+
+            <a href="https://ceotelangana.nic.in/GE_2018/InstructionsForConductingOfElections/Helicafter/INC_Manifesto_English.pdf" target="_blank">
+                Official Information ↗
+            </a>
+        </div>
+
+        <div class="accountability-card">
+            <div class="issue-icon">🏛</div>
+            <h2>Government Transparency</h2>
+            <p>
+                Public access to budgets, government orders, spending reports
+                and policy decisions helps improve accountability.
+            </p>
+
+            <ul>
+                <li>Budget utilization</li>
+                <li>Government project status</li>
+                <li>Policy implementation reports</li>
+                <li>Administrative transparency</li>
+            </ul>
+
+            <a href="https://startup.telangana.gov.in/government-policies/" target="_blank">
+                Government Orders ↗
+            </a>
+        </div>
+
+        <div class="accountability-card">
+            <div class="issue-icon">🌾</div>
+            <h2>Farmer & Rural Welfare</h2>
+            <p>
+                Agriculture support, irrigation, subsidies and rural development
+                remain key concerns for many citizens across Telangana.
+            </p>
+
+            <ul>
+                <li>Farmer welfare schemes</li>
+                <li>Irrigation projects</li>
+                <li>Crop insurance</li>
+                <li>Village infrastructure</li>
+            </ul>
+
+            <a href="https://www.rythubharosa.telangana.gov.in/" target="_blank">
+                Learn More ↗
+            </a>
+        </div>
+
+        <div class="accountability-card">
+            <div class="issue-icon">🎓</div>
+            <h2>Education & Youth</h2>
+            <p>
+                Students and youth expect improvements in education quality,
+                placements, skill development and innovation support.
+            </p>
+
+            <ul>
+                <li>Student scholarships</li>
+                <li>Government job notifications</li>
+                <li>Skill development</li>
+                <li>Startup ecosystem</li>
+            </ul>
+
+            <a href="https://schooledu.telangana.gov.in/SCHOOLEDUCATION/" target="_blank">
+                View Updates ↗
+            </a>
+        </div>
+
+    </div>
+</section>
+<section class="feedback-section" id="feedback">
+    <div class="feedback-container">
+        <div class="feedback-text">
+            <span>Citizen Feedback</span>
+            <h1>Submit Your Suggestions</h1>
+            <p>
+                Citizens can share suggestions about services, website improvements, public facilities,
+                district information, accessibility or governance topics.
+            </p>
+        </div>
+
+        <form class="feedback-form" onsubmit="submitFeedback(event)">
+            <input type="text" id="feedbackName" placeholder="Your Name" required>
+            <input type="email" id="feedbackEmail" placeholder="Email Address" required>
+            <select id="feedbackCategory" required>
+                <option value="">Select Category</option>
+                <option>Website Improvement</option>
+                <option>Citizen Service</option>
+                <option>District Information</option>
+                <option>Jobs & Notifications</option>
+                <option>Accessibility</option>
+                <option>Other</option>
+            </select>
+            <textarea id="feedbackMessage" placeholder="Write your suggestion..." required></textarea>
+            <button type="submit">Submit Feedback</button>
+        </form>
+    </div>
+</section>
+
+
+<section class="news-area" id="news-section">
+    <div>
+        <div class="panel whats-new">
+            <h2>What's New</h2>
+            <p>Amendments to the Telangana Fire Service Act, 1999 — Inviting suggestions.</p>
+            <button onclick="window.open('https://www.telangana.gov.in/news/whats-new/2026/04/amendments-to-the-telangana-fire-service-act-1999-inviting-suggestions/', '_blank')">Learn More ↗</button>
+        </div>
+
+        <div class="panel quick-links" style="margin-top:25px;">
+            <h2>Quick Links</h2>
+            <ul>
+                <li><a href="https://www.telangana.gov.in/about/history/" target="_blank">History</a></li>
+                <li><a href="https://www.telangana.gov.in/about/language-culture/" target="_blank">Language & Culture</a></li>
+                <li><a href="https://www.telangana.gov.in/government-initiatives/" target="_blank">Government Initiatives</a></li>
+                <li><a href="https://www.telangana.gov.in/news/" target="_blank">Press Releases</a></li>
+                <li><a href="https://www.telangana.gov.in/budget/" target="_blank">Budget & Finance</a></li>
+                <li><a href="https://tender.telangana.gov.in/" target="_blank">Tenders</a></li>
+                <li><a href="https://goir.telangana.gov.in/" target="_blank">Government Orders</a></li>
+                <li><a href="https://egazette.telangana.gov.in/" target="_blank">Gazette</a></li>
+                <li><a href="https://www.telangana.gov.in/cm-relief-fund/" target="_blank">CM Relief Fund</a></li>
+                <li><a href="https://email.gov.in/" target="_blank">Email</a></li>
+                <li><a href="https://www.telangana.gov.in/downloads/" target="_blank">Downloads</a></li>
+                <li><a href="https://www.telangana.gov.in/downloads/calendar-2026/" target="_blank">Calendar</a></li>
+            </ul>
+            <img src="quick.jpg" alt="Quick Links">
+        </div>
+    </div>
+
+    <div>
+        <h1 class="section-title">News & Press Releases</h1>
+
+        <div class="news-list">
+            <div class="news-card">
+                <a href="https://www.telangana.gov.in/news/press-releases/2026/05/honble-chief-minister-sri-a-revanth-reddy-participated-in-way2news-conclave-2026-at-jrc-convention-hyderabad/" target="_blank">
+                    <img src="pos5.jpg" alt="News">
+                    <div class="news-content">
+                        <h3>Hon’ble Chief Minister Sri A. Revanth Reddy Participated in Way2news</h3>
+                        <span>May 15, 2026</span>
+                        <p>Hon’ble Chief Minister Sri A. Revanth Reddy participated in Way2news conclave 2026 at JRC Convention, Hyderabad.</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="news-card">
+                <a href="https://www.telangana.gov.in/news/2026/05/" target="_blank">
+                    <img src="pos 1.jpg" alt="News">
+                    <div class="news-content">
+                        <h3>Telangana Government Meeting Press Release</h3>
+                        <span>May 13, 2026</span>
+                        <p>Government officials discussed development activities, welfare schemes and administration updates.</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="news-card">
+                <a href="https://www.telangana.gov.in/news/press-releases/2026/05/" target="_blank">
+                    <img src="pos 2.jpeg" alt="News">
+                    <div class="news-content">
+                        <h3>Chief Minister Reviews Ongoing Projects</h3>
+                        <span>May 13, 2026</span>
+                        <p>Public welfare projects and infrastructure works were reviewed during the meeting.</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="news-card">
+                <a href="https://www.telangana.gov.in/news/press-releases/2026/05/" target="_blank">
+                    <img src="pos 3.jpg" alt="News">
+                    <div class="news-content">
+                        <h3>Telangana Cabinet Discusses Development Plans</h3>
+                        <span>May 12, 2026</span>
+                        <p>New proposals for state growth and public welfare were discussed during the cabinet session.</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="news-card">
+                <a href="https://www.telangana.gov.in/news/press-releases/2026/05/" target="_blank">
+                    <img src="pos-4.jpeg" alt="News">
+                    <div class="news-content">
+                        <h3>Hon’ble CM Participated in the Inaugural Programme of Education</h3>
+                        <span>May 11, 2026</span>
+                        <p>CM participated in the inaugural programme of Education Week as part of Praja Palana – Pragathi Pranalika.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div class="panel relief-box">
+            <div class="relief-icon">❤</div>
+            <h2>Chief Minister Relief Fund</h2>
+            <p>The Chief Minister Relief Fund helps poor and needy people in distress across the state.</p>
+            <button onclick="window.open('https://www.telangana.gov.in/cm-relief-fund/', '_blank')">Donate Now ❤️</button>
+        </div>
+
+        <div class="telangana-box">
+            <img src="down.jpg" alt="Telangana">
+        </div>
+    </div>
+</section>
+
+<section class="about-telangana">
+    <div class="about-left">
+        <button class="about-btn active-btn" onclick="changeAbout('telangana', this)">About Telangana</button>
+        <button class="about-btn" onclick="changeAbout('citizen', this)">Citizen Services</button>
+        <button class="about-btn" onclick="changeAbout('invest', this)">Invest in Telangana</button>
+        <button class="about-btn" onclick="changeAbout('working', this)">Working in Telangana</button>
+        <button class="about-btn" onclick="changeAbout('learning', this)">Learning in Telangana</button>
+        <button class="about-btn" onclick="changeAbout('living', this)">Living in Telangana</button>
+        <button class="about-btn" onclick="changeAbout('visiting', this)">Visiting Telangana</button>
+    </div>
+
+    <div class="about-right">
+        <h1 id="aboutTitle">About Telangana</h1>
+
+        <div class="about-images">
+            <img id="aboutImg1" src="a4 (1).png" alt="About">
+            <img id="aboutImg2" src="a4 (2).png" alt="About">
+            <img id="aboutImg3" src="a4 (3).png" alt="About">
+            <img id="aboutImg4" src="a4 (4).png" alt="About">
+        </div>
+
+        <p id="aboutText">Telangana, as a geographical and political entity was born on June 2, 2014 as the 29th and the youngest state in Union of India.</p>
+
+        <div class="about-readmore">
+            <a id="aboutLink" href="#" target="_blank">Read More ↗</a>
+            <a id="aboutWebsite" href="#" target="_blank">Visit Website</a>
+            <a id="aboutExtra" href="#" target="_blank">Wild-Life-Telangana</a>
+        </div>
+    </div>
+</section>
+
+<section class="gallery-section">
+    <div class="gallery-box">
+        <div class="gallery-header">
+            <h2>Photo Gallery</h2>
+            <a href="https://www.telangana.gov.in/gallery/" class="gallery-btn" target="_blank">View All ↗</a>
+        </div>
+
+        <img src="gallery.jpg" alt="Gallery">
+
+        <div class="gallery-caption">
+            Hon’ble Chief Minister Sri A. Revanth Reddy participated in Way2news conclave 2026 at JRC Convention, Hyderabad.
+        </div>
+    </div>
+
+    <div class="gallery-box">
+        <div class="gallery-header">
+            <h2>Video Gallery</h2>
+            <a href="https://www.telangana.gov.in/video-gallery/" class="gallery-btn" target="_blank">View All ↗</a>
+        </div>
+
+        <video controls poster="thumbnail.jpg">
+            <source src="video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+</section>
+
+<section class="services-section">
+    <div class="service-card">
+        <div class="service-icon">₹</div>
+        <h2>Telangana Budget 2026-27</h2>
+        <p>View the annual budget documents for the financial year 2026-27 to the State Legislature.</p>
+        <button onclick="window.open('https://www.telangana.gov.in/budget-2026-2027/', '_blank')">View Documents</button>
+    </div>
+
+    <div class="service-card">
+        <div class="service-icon">⬇</div>
+        <h2>State Industrial Policy</h2>
+        <p>The policy framework intends to provide a business regulatory environment where doing business becomes easier.</p>
+        <button onclick="window.open('https://www.telangana.gov.in/state-industrial-policy/', '_blank')">Learn More</button>
+    </div>
+
+    <div class="service-card">
+        <div class="service-icon">👁</div>
+        <h2>Telangana Tourism</h2>
+        <p>Telangana has tourist attractions including historical places, monuments, forts and temples.</p>
+        <button onclick="window.open('http://telangana.gov.in/telangana-tourism/', '_blank')">Learn More</button>
+    </div>
+</section>
+
+<section class="logo-slider">
+    <div class="logo-track">
+        <img src="s1.jpg" alt="">
+        <img src="s2.jpg" alt="">
+        <img src="s3.jpg" alt="">
+        <img src="s4.jpg" alt="">
+        <img src="s5.jpg" alt="">
+        <img src="s6.jpg" alt="">
+        <img src="s7.jpg" alt="">
+        <img src="s8.png" alt="">
+        <img src="s1.jpg" alt="">
+        <img src="s2.jpg" alt="">
+        <img src="s3.jpg" alt="">
+        <img src="s4.jpg" alt="">
+        <img src="s5.jpg" alt="">
+        <img src="s6.jpg" alt="">
+        <img src="s7.jpg" alt="">
+        <img src="s8.png" alt="">
+    </div>
+</section>
+
+<footer class="main-footer">
+    <div class="footer-box">
+        <h2>Directory Links</h2>
+        <a href="https://www.telangana.gov.in/state-web-directory/" target="_blank">State Web Directory</a>
+        <a href="https://www.telangana.gov.in/district-web-directory/" target="_blank">District Web Directory</a>
+        <a href="https://www.telangana.gov.in/other-state-web-directory/" target="_blank">Other State Web Directory</a>
+        <a href="https://www.telangana.gov.in/other-important-links/" target="_blank">Other Important Links</a>
+        <a href="https://www.telangana.gov.in/contacts/hods/" target="_blank">Contact Directory</a>
+    </div>
+
+    <div class="footer-box">
+        <h2>Media</h2>
+        <a href="https://www.telangana.gov.in/gallery/" target="_blank">Photo Gallery</a>
+        <a href="https://www.telangana.gov.in/video-gallery/" target="_blank">Video Gallery</a>
+        <a href="https://www.telangana.gov.in/news/" target="_blank">News & Press Releases</a>
+    </div>
+
+    <div class="footer-box">
+        <h2>Emergency Contacts</h2>
+        <a href="https://www.tspolice.gov.in/jsp/homePage?method=getHomePageElements" target="_blank">Police : 100</a>
+        <a href="https://fire.telangana.gov.in/Home.aspx" target="_blank">Fire : 101</a>
+        <a href="https://hanumakonda.telangana.gov.in/public-utility-category/govthospitals/" target="_blank">Ambulance : 108</a>
+        <a href="https://redcross.cgg.gov.in/bloodbanks" target="_blank">Blood Bank : 040-24745243</a>
+    </div>
+
+    <div class="footer-box">
+        <h2>Social Media</h2>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/TelanganaCMO/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt=""></a>
+            <a href="https://x.com/TelanganaCMO" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt=""></a>
+            <a href="https://www.youtube.com/user/TelanganaCMO" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt=""></a>
+            <a href="https://www.instagram.com/telangana/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt=""></a>
+            <a href="https://www.whatsapp.com/channel/0029Va809Uk1SWt1teG4Gp0N" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt=""></a>
+        </div>
+    </div>
+</footer>
+
+<div class="footer-bottom">
+    Site Map | Screen Reader | Contact | Terms Of Use | Disclaimer | Accessibility | Website Policies | Cyber Security | Help | FAQs | Grievance
+</div>
+
+<div class="footer-bottom">
+    Copyright © 2015-2024 Government of Telangana. Last updated on May 20, 2026.
+</div>
+
+<div class="footer-images">
+    <img src="f1.png" alt="">
+    <img src="f2.jpg" alt="">
+    <img src="f3.jpg" alt="">
+    <img src="f4.jpg" alt="">
+</div>
+
+<script src="script.js"></script>
+</body>
+</html> 

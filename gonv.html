@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thank You</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(-45deg,#000,#1a1a1a,#000,#2a0000);
+    background-size:400% 400%;
+    animation:bgMove 8s infinite ease-in-out;
+    font-family:Arial;
+    overflow:hidden;
+}
+
+/* Background floating text */
+body::before{
+    content:"THANK YOU  THANK YOU  THANK YOU  THANK YOU";
+    position:absolute;
+    font-size:80px;
+    color:rgba(255,255,255,0.03);
+    white-space:nowrap;
+    animation:moveText 20s linear infinite;
+}
+
+/* Main text */
+h1{
+    font-size:80px;
+    color:crimson;
+    text-shadow:0 0 10px crimson, 0 0 30px red;
+    animation:glow 2s infinite alternate, float 3s ease-in-out infinite;
+    z-index:1;
+}
+
+/* Background animation */
+@keyframes bgMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+/* Floating big text */
+@keyframes float{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-15px);}
+}
+
+/* Glow effect */
+@keyframes glow{
+    0%{
+        text-shadow:0 0 10px crimson,0 0 20px red;
+        color:crimson;
+    }
+    100%{
+        text-shadow:0 0 20px yellow,0 0 40px orange;
+        color:yellow;
+    }
+}
+
+@keyframes moveText{
+    0%{transform:translateX(-100%);}
+    100%{transform:translateX(100%);}
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>THANK YOU
+    for your review
+</h1>
+
+</body>
+</html>
